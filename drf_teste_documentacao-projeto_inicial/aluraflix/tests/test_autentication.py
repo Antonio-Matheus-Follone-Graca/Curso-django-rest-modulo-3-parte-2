@@ -55,4 +55,11 @@ class AuthenticationUserTestCase(APITestCase):
         '''
             Teste que verifica uma requisição GET de um user autenticado 
         '''
+        # fazendo requisição
+        self.client.force_authenticate(self.user)
+        # fazendo requisição get
+        response =self.client.get(self.list_url)
+        # verificando se deu certo a requisição do usuário logado
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     
